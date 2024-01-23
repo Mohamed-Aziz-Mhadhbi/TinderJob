@@ -83,7 +83,7 @@ class _SplashPageState extends State<SplashPage> {
               children: [
                 FittedBox(
                   child: Text(
-                    "StarterApp",
+                    "Tinder Job",
                     style: TextStyle(
                       fontSize: 50,
                       color: Colors.white,
@@ -93,7 +93,7 @@ class _SplashPageState extends State<SplashPage> {
                   ),
                 ),
                 Text(
-                  "Your splashscreen!",
+                  "Your Futur is Here",
                   style: TextStyle(
                     color: Colors.white,
                   ),

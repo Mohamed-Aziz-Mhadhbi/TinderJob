@@ -15,7 +15,7 @@ class LandingPage extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
         title: const Text(
-          "StarterApp",
+          "Tinder Job",
           style: TextStyle(
             fontSize: 40,
             color: StyleConstants.colorTitle,
