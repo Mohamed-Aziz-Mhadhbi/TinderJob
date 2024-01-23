@@ -65,7 +65,7 @@ class _SplashPageState extends State<SplashPage> {
             left: 0,
             child: CustomPaint(
               painter: Circle(size.width - size.width / 5, 0, size.width,
-                  StyleConstants.colorOfApp),
+                  StyleConstants.primary),
             ),
           ),
           Positioned(
