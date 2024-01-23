@@ -16,7 +16,7 @@ class StarterApp extends StatelessWidget {
       builder: (context, provider, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'StarterApp',
+          title: 'TinderJob',
           theme: lightTheme,
           initialRoute: RoutesConstants.splashScreenRoute,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
