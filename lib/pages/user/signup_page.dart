@@ -95,9 +95,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(
                   height: 50,
                 ),
-                const Center(
-                  child: Text('You Forgot your password?'),
-                ),
                 const SizedBox(height: 16),
                 Center(
                   child: ElevatedButton(
