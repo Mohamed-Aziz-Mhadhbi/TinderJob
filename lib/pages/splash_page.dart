@@ -32,7 +32,7 @@ class _SplashPageState extends State<SplashPage> {
       }
     } else {
       if (context.mounted) {
-        Navigator.of(context).popAndPushNamed(RoutesConstants.loginRoute);
+        Navigator.of(context).popAndPushNamed(RoutesConstants.signUpRoute);
       }
     }
   }
