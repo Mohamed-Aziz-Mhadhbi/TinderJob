@@ -15,7 +15,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   String email = '';
-  String password = '';
+  String password = 'a';
   String confirmPassword = '';
 
   Future<void> redirectPageToSigUp() async {
@@ -32,6 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   void _trySubmit() {
     if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
       // If the form is valid, display a snackbar.
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('Logging in...')));
