@@ -43,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Logo')),
+        title: const Center(child: Text('Sign Up')),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -76,16 +76,34 @@ class _SignUpPageState extends State<SignUpPage> {
                     password = value!;
                   },
                 ),
+                const SizedBox(height: 16),
+                TextFormField(
+                  decoration:
+                      const InputDecoration(labelText: 'Confirm Password'),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please confirm your password';
+                    } else if (value != password) {
+                      return 'Passwords do not match';
+                    }
+                    return null;
+                  },
+                  onSaved: (value) {
+                    confirmPassword = value!;
+                  },
+                ),
                 const SizedBox(
-                  height: 24,
+                  height: 50,
                 ),
                 const Center(
                   child: Text('You Forgot your password?'),
                 ),
+                const SizedBox(height: 16),
                 Center(
                   child: ElevatedButton(
                     onPressed: _trySubmit,
-                    child: const Text('Sign In'),
+                    child: const Text('Sign Up'),
                   ),
                 ),
               ],
