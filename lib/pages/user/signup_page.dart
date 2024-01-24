@@ -26,7 +26,6 @@ class _SignUpPageState extends State<SignUpPage> {
     } else {
       if (context.mounted) {
         // Navigator.of(context).popAndPushNamed(RoutesConstants.signUpRoute);
-        print("lllllllllelelelelele");
       }
     }
   }
