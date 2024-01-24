@@ -9,17 +9,17 @@ class LoginPage extends StatefulWidget {
 
   @override
   State<LoginPage> createState() {
-    return _MyHomePageState();
+    return _LoginPageState();
   }
 }
 
-class _MyHomePageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  Future<void> redirectPageToSignUp() async {
+  Future<void> redirectPageToSigUp() async {
     if (!await InternetConnectionChecker().hasConnection) {
       if (context.mounted) {
         Navigator.of(context).popAndPushNamed(RoutesConstants.noInternetRoute);
