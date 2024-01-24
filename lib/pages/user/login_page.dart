@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() {
@@ -31,11 +31,11 @@ class _MyHomePageState extends State<LoginPage> {
         title: const Center(child: Text('Logo')),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24.0),
         child: Form(
           key: _formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               ElevatedButton(
                 onPressed: () async {
@@ -63,6 +63,9 @@ class _MyHomePageState extends State<LoginPage> {
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 16,
+              ),
               Row(
                 children: [
                   Expanded(
@@ -85,8 +88,7 @@ class _MyHomePageState extends State<LoginPage> {
               ),
               const SizedBox(height: 16),
               TextFormField(
-                decoration:
-                    const InputDecoration(labelText: 'Enter Your Email'),
+                decoration: const InputDecoration(labelText: 'Enter Your Email'),
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -112,7 +114,27 @@ class _MyHomePageState extends State<LoginPage> {
                   password = value!;
                 },
               ),
-              const SizedBox(height: 24),
+              const SizedBox(
+                height: 24,
+              ),
+              const Center(
+                child: Text('You Forgot your password?'),
+              ),
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    // Handle the button press
+                  },
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.blue,
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  child: const Text('Click Here'),
+                ),
+              ),
+              const SizedBox(height: 50),
               Center(
                 child: ElevatedButton(
                   onPressed: _trySubmit,
@@ -121,7 +143,21 @@ class _MyHomePageState extends State<LoginPage> {
               ),
               const SizedBox(height: 16),
               const Center(
-                child: Text('Forgot your password?'),
+                child: Text("You don't have an account?"),
+              ),
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    // Handle the button press
+                  },
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.blue,
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  child: const Text('Sign Up'),
+                ),
               ),
             ],
           ),
