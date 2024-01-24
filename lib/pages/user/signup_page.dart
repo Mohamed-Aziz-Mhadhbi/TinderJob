@@ -15,7 +15,7 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   String email = '';
-  String password = 'a';
+  String password = '';
   String confirmPassword = '';
 
   Future<void> redirectPageToSigUp() async {
