@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:tinderjob/routes/routes_constants.dart';
 import 'package:tinderjob/services/reg_exp.dart';
 
 class LoginPage extends StatefulWidget {
@@ -16,6 +18,18 @@ class _MyHomePageState extends State<LoginPage> {
   String email = '';
   String password = '';
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  Future<void> redirectPageToSignUp() async {
+    if (!await InternetConnectionChecker().hasConnection) {
+      if (context.mounted) {
+        Navigator.of(context).popAndPushNamed(RoutesConstants.noInternetRoute);
+      }
+    } else {
+      if (context.mounted) {
+        Navigator.of(context).popAndPushNamed(RoutesConstants.signUpRoute);
+      }
+    }
+  }
 
   void _trySubmit() {
     if (_formKey.currentState!.validate()) {

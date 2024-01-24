@@ -4,6 +4,7 @@ import 'package:tinderjob/pages/splash_page.dart';
 import 'package:tinderjob/pages/undefinited_page.dart';
 import 'package:tinderjob/pages/user/login_page.dart';
 import 'package:tinderjob/routes/routes_constants.dart';
+import '../pages/user/signUp_page.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -16,6 +17,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         settings: settings,
         builder: (context) => const LoginPage(),
+      );
+    case RoutesConstants.signUpRoute:
+      return MaterialPageRoute(
+        settings: settings,
+        builder: (context) => const SignUpPage(),
       );
     case RoutesConstants.noInternetRoute:
       return MaterialPageRoute(
