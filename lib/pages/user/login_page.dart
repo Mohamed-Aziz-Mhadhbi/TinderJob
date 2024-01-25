@@ -20,7 +20,6 @@ class _LoginPageState extends State<LoginPage> {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   Future<void> redirectPageToSignUp() async {
-    print("hhhhhhhhhhhhhhh");
     if (!await InternetConnectionChecker().hasConnection) {
       if (context.mounted) {
         Navigator.of(context).popAndPushNamed(RoutesConstants.noInternetRoute);

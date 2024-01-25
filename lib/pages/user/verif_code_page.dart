@@ -5,7 +5,7 @@ class VerificationCodePage extends StatefulWidget {
   const VerificationCodePage({Key? key}) : super(key: key);
 
   @override
-  _VerificationCodePageState createState() => _VerificationCodePageState();
+  State<VerificationCodePage> createState() => _VerificationCodePageState();
 }
 
 class _VerificationCodePageState extends State<VerificationCodePage> {
