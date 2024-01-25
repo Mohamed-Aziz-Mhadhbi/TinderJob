@@ -28,16 +28,32 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
     }
   }
 
-  Future<void> _resendCode() async {
-    // Add code here to resend the verification code
+  Future<void> verif() async {
+    if (!await InternetConnectionChecker().hasConnection) {
+      if (context.mounted) {
+        Navigator.of(context).popAndPushNamed(RoutesConstants.noInternetRoute);
+      }
+    } else {
+      if (context.mounted) {
+        Navigator.of(context).popAndPushNamed(RoutesConstants.successfullRoute);
+      }
+    }
   }
 
-  void _trySubmit() {
+  void _trySubmit() async {
     if (_formKey.currentState!.validate()) {
       // If the form is valid, display a snackbar.
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('Verifying code...')));
+      // Wait for 3 seconds (or any desired duration)
+      await Future.delayed(const Duration(seconds: 1));
+      // Call the verification func
+      await verif();
     }
+  }
+
+  Future<void> _resendCode() async {
+    // Add code here to resend the verification code
   }
 
   @override
