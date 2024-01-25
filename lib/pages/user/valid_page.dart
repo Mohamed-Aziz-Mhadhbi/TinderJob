@@ -17,7 +17,7 @@ class _SuccessfullPageState extends State<SuccessfullPage> {
       }
     } else {
       if (context.mounted) {
-        Navigator.of(context).popAndPushNamed(RoutesConstants.signUpRoute);
+        Navigator.of(context).popAndPushNamed(RoutesConstants.createAccountRoute);
       }
     }
   }
