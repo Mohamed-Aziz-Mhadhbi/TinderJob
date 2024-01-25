@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import '../../routes/routes_constants.dart';
 
-class AccountCreatedPage extends StatelessWidget {
-  const AccountCreatedPage({Key? key}) : super(key: key);
+class SuccessfullPage extends StatefulWidget {
+  const SuccessfullPage({Key? key}) : super(key: key);
+
+  @override
+  State<SuccessfullPage> createState() => _SuccessfullPageState();
+}
+
+class _SuccessfullPageState extends State<SuccessfullPage> {
+  Future<void> redirectPage() async {
+    if (!await InternetConnectionChecker().hasConnection) {
+      if (context.mounted) {
+        Navigator.of(context).popAndPushNamed(RoutesConstants.noInternetRoute);
+      }
+    } else {
+      if (context.mounted) {
+        Navigator.of(context).popAndPushNamed(RoutesConstants.signUpRoute);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
