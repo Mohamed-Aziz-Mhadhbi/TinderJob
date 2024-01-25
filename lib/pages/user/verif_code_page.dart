@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:tinderjob/routes/routes_constants.dart';
 
 class VerificationCodePage extends StatefulWidget {
   const VerificationCodePage({Key? key}) : super(key: key);
@@ -13,6 +15,18 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
   final _verificationCodeController = TextEditingController();
   final _emailController =
       TextEditingController(text: 'Jason.Cleveland@gmail.com');
+
+  Future<void> redirectPageSignUpPage() async {
+    if (!await InternetConnectionChecker().hasConnection) {
+      if (context.mounted) {
+        Navigator.of(context).popAndPushNamed(RoutesConstants.noInternetRoute);
+      }
+    } else {
+      if (context.mounted) {
+        Navigator.of(context).popAndPushNamed(RoutesConstants.signUpRoute);
+      }
+    }
+  }
 
   Future<void> _resendCode() async {
     // Add code here to resend the verification code
@@ -30,7 +44,14 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const BackButton(color: Colors.black),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: redirectPageSignUpPage,
+            );
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(

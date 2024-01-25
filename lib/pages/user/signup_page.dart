@@ -18,24 +18,15 @@ class _SignUpPageState extends State<SignUpPage> {
   String password = '';
   String confirmPassword = '';
 
-  Future<void> redirectPageToSigUp() async {
+  Future<void> redirectPageVerificationPage() async {
     if (!await InternetConnectionChecker().hasConnection) {
       if (context.mounted) {
         Navigator.of(context).popAndPushNamed(RoutesConstants.noInternetRoute);
       }
     } else {
       if (context.mounted) {
-        // Navigator.of(context).popAndPushNamed(RoutesConstants.signUpRoute);
+        Navigator.of(context).popAndPushNamed(RoutesConstants.verifcodeRoute);
       }
-    }
-  }
-
-  void _trySubmit() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      // If the form is valid, display a snackbar.
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Logging in...')));
     }
   }
 
@@ -84,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please confirm your password';
-                    } else if (value != password) {
+                    } else if (value == password) {
                       return 'Passwords do not match';
                     }
                     return null;
@@ -99,7 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(height: 16),
                 Center(
                   child: ElevatedButton(
-                    onPressed: _trySubmit,
+                    onPressed: redirectPageVerificationPage,
                     child: const Text('Sign Up'),
                   ),
                 ),
