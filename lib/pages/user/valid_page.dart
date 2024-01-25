@@ -10,7 +10,7 @@ class SuccessfullPage extends StatefulWidget {
 }
 
 class _SuccessfullPageState extends State<SuccessfullPage> {
-  Future<void> redirectPage() async {
+  Future<void> redirectPageSetupPage() async {
     if (!await InternetConnectionChecker().hasConnection) {
       if (context.mounted) {
         Navigator.of(context).popAndPushNamed(RoutesConstants.noInternetRoute);
@@ -47,9 +47,7 @@ class _SuccessfullPageState extends State<SuccessfullPage> {
             ),
             const SizedBox(height: 32),
             ElevatedButton(
-              onPressed: () {
-                // Add code here to navigate to the login page
-              },
+              onPressed: redirectPageSetupPage,
               child: const Text('Proceed'),
             ),
           ],
