@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:intl/intl.dart';
+import 'package:tinderjob/routes/routes_constants.dart';
 
 class ProfileSetupPage extends StatefulWidget {
   const ProfileSetupPage({Key? key}) : super(key: key);
@@ -17,6 +19,17 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
   final _cityController = TextEditingController(text: 'Cleveland');
   DateTime? _birthday;
   String? _country;
+  Future<void> redirectPageSkillsPage() async {
+    if (!await InternetConnectionChecker().hasConnection) {
+      if (context.mounted) {
+        Navigator.of(context).popAndPushNamed(RoutesConstants.noInternetRoute);
+      }
+    } else {
+      if (context.mounted) {
+        Navigator.of(context).popAndPushNamed(RoutesConstants.skillsRoute);
+      }
+    }
+  }
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -145,7 +158,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
-                  onPressed: _trySubmit,
+                  onPressed: redirectPageSkillsPage,
                   child: const Text('Continue'),
                 ),
               ],
