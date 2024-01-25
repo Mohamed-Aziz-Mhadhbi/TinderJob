@@ -6,4 +6,5 @@ class RoutesConstants {
   static const String verifcodeRoute = "/verifcode";
   static const String successfullRoute = "/successfull";
   static const String createAccountRoute = "/createaccount";
+  static const String skillsRoute = "/skills";
 }

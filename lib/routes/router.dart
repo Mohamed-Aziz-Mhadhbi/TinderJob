@@ -4,6 +4,7 @@ import 'package:tinderjob/pages/splash_page.dart';
 import 'package:tinderjob/pages/undefinited_page.dart';
 import 'package:tinderjob/pages/user/create_profile_page.dart';
 import 'package:tinderjob/pages/user/login_page.dart';
+import 'package:tinderjob/pages/user/skills_page.dart';
 import 'package:tinderjob/pages/user/valid_page.dart';
 import 'package:tinderjob/routes/routes_constants.dart';
 import '../pages/user/signUp_page.dart';
@@ -40,6 +41,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(
         settings: settings,
         builder: (context) => const ProfileSetupPage(),
+      );
+    case RoutesConstants.skillsRoute:
+      return MaterialPageRoute(
+        settings: settings,
+        builder: (context) => const SkillsPage(),
       );
     case RoutesConstants.noInternetRoute:
       return MaterialPageRoute(
