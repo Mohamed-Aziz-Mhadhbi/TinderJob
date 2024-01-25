@@ -119,7 +119,7 @@ class _ProfileSetupPageState extends State<ProfileSetupPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(_country ?? 'Country'),
-                           const Icon(Icons.arrow_drop_down),
+                            const Icon(Icons.arrow_drop_down),
                           ],
                         ),
                       ),
