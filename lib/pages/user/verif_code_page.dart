@@ -11,7 +11,8 @@ class VerificationCodePage extends StatefulWidget {
 class _VerificationCodePageState extends State<VerificationCodePage> {
   final _formKey = GlobalKey<FormState>();
   final _verificationCodeController = TextEditingController();
-  final _emailController = TextEditingController(text: 'Jason.Cleveland@gmail.com');
+  final _emailController =
+      TextEditingController(text: 'Jason.Cleveland@gmail.com');
 
   Future<void> _resendCode() async {
     // Add code here to resend the verification code
@@ -29,7 +30,7 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Verification Code'),
+        leading: const BackButton(color: Colors.black),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -39,19 +40,22 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Text(
-                  'AUTHENTICATE YOUR C',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+                const SizedBox(height: 16),
+                Center(
+                  child: Text(
+                    'Enter Verification Code',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey[600],
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Enter Verification Code',
+                  'Enter the four digit numbers we sent to your email address ${_emailController.text}',
                   style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                     color: Colors.grey[600],
                   ),
                 ),
@@ -73,29 +77,24 @@ class _VerificationCodePageState extends State<VerificationCodePage> {
                   },
                 ),
                 const SizedBox(
-                  height: 24,
+                  height: 25,
                 ),
-                Text(
-                  'Enter the four digit numbers we sent to your email address ${_emailController.text}',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[600],
-                  ),
+                ElevatedButton(
+                  onPressed: _trySubmit,
+                  child: const Text('Verify'),
                 ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                const SizedBox(
+                  height: 25,
+                ),
+                Column(
                   children: [
-                    ElevatedButton(
-                      onPressed: _trySubmit,
-                      child: const Text('Verify'),
-                    ),
+                    const Text("Didn't receive anything?"),
                     TextButton(
                       onPressed: _resendCode,
                       style: TextButton.styleFrom(
                         foregroundColor: Colors.blue,
                       ),
-                      child: const Text('Didn\'t receive anything?'),
+                      child: const Text('Resend Code'),
                     ),
                   ],
                 ),
