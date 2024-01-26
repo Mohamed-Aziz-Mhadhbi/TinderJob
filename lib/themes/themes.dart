@@ -7,6 +7,9 @@ ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primary: StyleConstants.primary,
     secondary: StyleConstants.secondary,
+    background: Color.fromARGB(255, 4, 214, 99),
+    surface: Colors.amber,
+    error: Colors.red,
   ),
 );
 
